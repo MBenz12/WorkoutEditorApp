@@ -8,17 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		06E7DFAC2B3608DD0025260F /* WorkoutEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E7DFAB2B3608DD0025260F /* WorkoutEditorApp.swift */; };
-		06E7DFAE2B3608DD0025260F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E7DFAD2B3608DD0025260F /* ContentView.swift */; };
+		06E7DFAE2B3608DD0025260F /* WorkoutAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E7DFAD2B3608DD0025260F /* WorkoutAddView.swift */; };
 		06E7DFB02B3608E00025260F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E7DFAF2B3608E00025260F /* Assets.xcassets */; };
 		06E7DFB32B3608E00025260F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E7DFB22B3608E00025260F /* Preview Assets.xcassets */; };
+		06E7DFC32B3653F70025260F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E7DFC22B3653F70025260F /* HealthKitManager.swift */; };
+		06E7DFC52B3654500025260F /* WorkoutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E7DFC42B3654500025260F /* WorkoutListView.swift */; };
+		06E7DFC72B3654D50025260F /* WorkoutEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E7DFC62B3654D50025260F /* WorkoutEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		063E686B2B45161B0048778C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		06E7DFA82B3608DD0025260F /* WorkoutEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E7DFAB2B3608DD0025260F /* WorkoutEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditorApp.swift; sourceTree = "<group>"; };
-		06E7DFAD2B3608DD0025260F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		06E7DFAD2B3608DD0025260F /* WorkoutAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutAddView.swift; sourceTree = "<group>"; };
 		06E7DFAF2B3608E00025260F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06E7DFB22B3608E00025260F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		06E7DFB92B3609EA0025260F /* WorkoutEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkoutEditor.entitlements; sourceTree = "<group>"; };
+		06E7DFC22B3653F70025260F /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		06E7DFC42B3654500025260F /* WorkoutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListView.swift; sourceTree = "<group>"; };
+		06E7DFC62B3654D50025260F /* WorkoutEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditView.swift; sourceTree = "<group>"; };
+		06E7DFC82B3668D10025260F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,11 +41,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		063E686A2B45161A0048778C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				063E686B2B45161B0048778C /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		06E7DF9F2B3608DD0025260F = {
 			isa = PBXGroup;
 			children = (
 				06E7DFAA2B3608DD0025260F /* WorkoutEditor */,
 				06E7DFA92B3608DD0025260F /* Products */,
+				063E686A2B45161A0048778C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +69,13 @@
 		06E7DFAA2B3608DD0025260F /* WorkoutEditor */ = {
 			isa = PBXGroup;
 			children = (
+				06E7DFC82B3668D10025260F /* Info.plist */,
+				06E7DFB92B3609EA0025260F /* WorkoutEditor.entitlements */,
 				06E7DFAB2B3608DD0025260F /* WorkoutEditorApp.swift */,
-				06E7DFAD2B3608DD0025260F /* ContentView.swift */,
+				06E7DFAD2B3608DD0025260F /* WorkoutAddView.swift */,
+				06E7DFC62B3654D50025260F /* WorkoutEditView.swift */,
+				06E7DFC42B3654500025260F /* WorkoutListView.swift */,
+				06E7DFC22B3653F70025260F /* HealthKitManager.swift */,
 				06E7DFAF2B3608E00025260F /* Assets.xcassets */,
 				06E7DFB12B3608E00025260F /* Preview Content */,
 			);
@@ -137,8 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06E7DFAE2B3608DD0025260F /* ContentView.swift in Sources */,
+				06E7DFAE2B3608DD0025260F /* WorkoutAddView.swift in Sources */,
 				06E7DFAC2B3608DD0025260F /* WorkoutEditorApp.swift in Sources */,
+				06E7DFC52B3654500025260F /* WorkoutListView.swift in Sources */,
+				06E7DFC32B3653F70025260F /* HealthKitManager.swift in Sources */,
+				06E7DFC72B3654D50025260F /* WorkoutEditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,11 +290,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WorkoutEditor/WorkoutEditor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WorkoutEditor/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorkoutEditor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -292,11 +320,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WorkoutEditor/WorkoutEditor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WorkoutEditor/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorkoutEditor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

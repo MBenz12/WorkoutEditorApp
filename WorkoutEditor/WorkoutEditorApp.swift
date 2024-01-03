@@ -11,7 +11,18 @@ import SwiftUI
 struct WorkoutEditorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WorkoutListView()
+                .onAppear() {
+                    HealthKitManager.shared.requestAuthorization { success, error in
+                        if success {
+                            // Proceed with HealthKit-related functionality
+                            print("Authorization requested successfully")
+                        } else {
+                            // Handle authorization error
+                            print("Error requesting HealthKit authorization: \(error?.localizedDescription ?? "Unknown error")")
+                        }
+                    }
+                }
         }
     }
 }
