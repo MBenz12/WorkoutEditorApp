@@ -8,9 +8,10 @@
 import Foundation
 import HealthKit
 
-class HealthKitManager {
+class HealthKitManager: ObservableObject {
     static let shared = HealthKitManager()
 
+    @Published var loadedWorkouts: [HKWorkout]?
     private let healthStore = HKHealthStore()
     
     // Request authorization for specific health data types
@@ -35,15 +36,18 @@ class HealthKitManager {
         }
     }
     
-    func loadWorkouts(completion: @escaping ([HKWorkout]?, Error?) -> Void) {
+    func loadWorkouts() {
         let workoutType = HKObjectType.workoutType()
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         let query = HKSampleQuery(sampleType: workoutType, predicate: nil, limit: 100, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
             guard let workouts = samples as? [HKWorkout] else {
-                completion(nil, error)
                 return
             }
-            completion(workouts, error)
+            
+            // Store the loaded workouts and trigger an update
+            DispatchQueue.main.async {
+                self.loadedWorkouts = workouts
+            }
         }
 
         self.healthStore.execute(query)

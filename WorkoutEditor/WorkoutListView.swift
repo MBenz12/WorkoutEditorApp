@@ -9,33 +9,22 @@ import SwiftUI
 import HealthKit
 
 struct WorkoutListView: View {
-    @State private var workouts: [HKWorkout] = []
+    @StateObject private var healthKitManager = HealthKitManager.shared
     var body: some View {
         NavigationView {
-            List(workouts, id: \.uuid) { workout in
+            List(healthKitManager.loadedWorkouts ?? [], id: \.uuid) { workout in
                 NavigationLink(destination: WorkoutEditView(workout: workout)) {
                     // Display date in "DD-MM-YYYY" format along with activity type
                     Text("\(formattedDate(workout.startDate)) - \(workout.workoutActivityType.activityTypeDescription)")
                 }
             }
-            .onAppear {
-                loadWorkouts()
+            .onAppear() {
+                healthKitManager.loadWorkouts()
             }
             .navigationTitle("Workouts")
             .navigationBarItems(trailing: NavigationLink(destination: WorkoutAddView()) {
                 Image(systemName: "plus")
             })
-        }
-    }
-    
-    private func loadWorkouts() {
-        HealthKitManager.shared.loadWorkouts { (loadedWorkouts, error) in
-            if let error = error {
-                // Handle error
-                print("Error loading workouts: \(error.localizedDescription)")
-            } else if let loadedWorkouts = loadedWorkouts {
-                self.workouts = loadedWorkouts
-            }
         }
     }
 
